@@ -25,11 +25,11 @@ public class CompanyRobot {
 			TcpClient client = clients[i];
 			new Thread(() -> {
 				for(int j = 0; j < N_RUNS; j++) {
-					System.out.println("Sending request " + (j + 1) + " from client " + Thread.currentThread().getId());
+					
 					client.sendAndReceive(new Request("addEmployee",
 							new Employee(employeeId.getAndIncrement(),
 									10000, "Dep").getJSON()));
-				}System.out.println("Closing client " + Thread.currentThread().getId());
+				}
 				client.close();
 			}).start();
 		}
